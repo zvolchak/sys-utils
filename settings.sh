@@ -18,10 +18,26 @@ if [ "$ACTION" == "proxy" ]; then
   exit 0
 fi
 
+if [ "$ACTION" == "--set-proxy" ]; then
+  export "http_proxy=http://web-proxy.corp.hpecorp.net:8080/"
+  export "https_proxy=http://web-proxy.corp.hpecorp.net:8080/"
+  export "ftp_proxy=http://web-proxy.corp.hpecorp.net:8080/"
+  exit 0
+fi
+
+if [ "$ACTION" == "--unset-proxy" ]; then
+    http_proxy=
+    https_proxy=
+    ftp_proxy=
+    exit 0
+fi
+
+
 if [ "$ACTION" == "env-proxy" ]; then
   echo "Showing proxy..."
   env | grep proxy
   exit 0
 fi
+
 
 echo "ZZzZzz..."

@@ -14,31 +14,31 @@ fi
 isError=0
 
 case $OPT in
-    ls|l|ll)
+    -ls|-l|-ll)
         echo
         sudo brctl show
         echo
     ;;
-    e)
+    -e)
         sudo virsh net-edit $target
     ;;
-    dest)
+    -dest)
        sudo virsh net-destroy $target
     ;;
-    def)
+    -def)
        sudo virsh net-define $target
     ;;
-    undef)
+    -undef)
         sudo virsh net-undefine $target
     ;;
-    start)
+    -start)
        sudo virsh net-start $target
     ;;
-    re-start)
+    -re-start)
         sudo virsh net-destroy $target_2
         sudo virsh net-start $target
     ;;
-    re-conf)
+    -re-conf)
         file_name=$3
         sudo virsh net-destroy $target
         sudo virsh net-undefine $target
@@ -48,14 +48,15 @@ case $OPT in
     *)
     isError=1
     echo "
-ls
-e [target]
-dest [target]
-def [target]
-undef [target]
-start [target]
-re-start [to-start] [to-destroy]
-re-conf [target] [xml file]"
+-ls
+-e [target]
+-dest [target]
+-def [target]
+-undef [target]
+-start [target]
+-re-start [to-start] [to-destroy]
+-re-conf [target] [xml file]"
+    echo
     ;;
 esac
 
