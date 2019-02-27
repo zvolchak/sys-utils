@@ -17,6 +17,7 @@ syntax on
 filetype plugin indent on
 color desert
 set number
+set mouse=a
 
 hi ColorColumn guibg=Blue ctermbg=Black
 let &colorcolumn=join(range(80, 80), ",")
